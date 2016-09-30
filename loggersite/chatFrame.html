@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <title>Child Frame</title>
+    <script>
+        $(document).ready(function () {
+            var loopCount = 1000;
+            for (var i = 0; i < loopCount; i++) {
+                //logText("frame-load-" + i);
+            }
+
+            $(window).on('beforeunload', function (event) {
+                for (var i = 0; i < loopCount; i++) {
+                    logText("frame-beforeunload-" + i)
+                }
+            });
+            $(window).on('unload', function (event) {
+                for (var i = 0; i < loopCount; i++) {
+                    logText("frame-unload-" + i);
+                }
+            });
+
+        })
+        var logText = function (text) {
+            $.ajax({
+                type: "GET",
+                url: "Default.aspx?text=" + text,
+                async: false
+            })
+        }
+    </script>
+</head>
+<body>
+    frame
+</body>
+</html>

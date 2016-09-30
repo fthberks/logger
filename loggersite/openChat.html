@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+<a href="#" onclick="openChat()">open chat</a>
+<a href="#" onclick="closeChat()">close chat</a>
+ <script>
+     var myWindow;
+     function closeChat() {
+         if (myWindow && !myWindow.closed) {
+             myWindow.close();
+         }
+     }
+     function openChat() {
+         debugger;
+         if (myWindow && !myWindow.closed) {
+             myWindow.focus();
+         }
+         else {
+             var myWindowStorage = localStorage.getItem("myWindow");
+             if (myWindowStorage != undefined && myWindowStorage.closed != undefined && !myWindowStorage.closed) {
+                 myWindowStorage.focus();
+             }
+             else {
+                 myWindow = window.open("http://192.168.56.1/loggersite/chat.html", "", "width=200,height=100");
+                 localStorage.setItem("myWindow", myWindow);
+             }
+
+         }
+     }
+ </script>
+</body>
+</html>
