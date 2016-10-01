@@ -14,7 +14,7 @@ public partial class _Default : System.Web.UI.Page
         /*ErrorLogger err = new ErrorLogger();
         err.Log(string.Format("{0}\t{1}\t{2}\n", DateTime.Now.ToString(), Request.UserAgent, Request.QueryString["text"]));*/
 
-        DefaultLogger def = new DefaultLogger();
+        DebugLogger def = new DebugLogger();
         def.Log(string.Format("{0}\t{1}\t{2}\n", DateTime.Now.ToString(), Request.UserAgent, Request.QueryString["text"]));
     }
 }
